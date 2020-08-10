@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../components/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -13,7 +13,7 @@ Vue.use(VueRouter)
   {
     path: '/movie/:id',
     name: 'Details',
-    component: () => import('../views/Details.vue')
+    component: () => import('../components/Details.vue')
   }
 ]
 
