@@ -6,7 +6,7 @@
                 <button class="page-item" v-on:click="downPage">Previous</button>
             </li>
             <li class="page-item active">
-                <a class="page-link" href="">{{this.page}} </a>
+                <a class="page-link" href="">{{this.$store.state.page}} </a>
             </li>
             <li class="page-item disabled">
                 <button class="page-item" v-on:click="upPage">Next</button>
@@ -22,26 +22,21 @@ export default {
     name: 'Pagination',
     data(){
         return{
-            page: 1,
+            page: this.$store.state.page,
             total_page: 500
         }
     },
 
     methods:{
         upPage(){
-            if(this.page<=500){
-                this.page = this.page + 1
-                this.allmovies()
-            }
+            this.$store.commit('UP_PAGE');
+            this.$store.dispatch("GET_MOVIES", this.$store.state.page);
         },
 
         downPage(){
-            if(this.page>1){
-                this.page = this.page - 1
-                this.allmovies()
-            }
-        }
-        
+            this.$store.commit('DOWN_PAGE');
+            this.$store.dispatch("GET_MOVIES", this.$store.state.page);
+        } 
     }
 }
 </script>

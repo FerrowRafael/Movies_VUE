@@ -3,20 +3,8 @@
   <div class="home container-fluid">
 
     <!-- PAGINATION -->
-    <div class="abs-center">
-      <ul class="pagination ">
-        <li class="page-item">
-          <button class="page-item" v-on:click="downPage">Previous</button>
-        </li>
-        <li class="page-item active">
-          <a class="page-link" href="">{{this.$store.state.page}} </a>
-        </li>
-        <li class="page-item disabled">
-        <button class="page-item" v-on:click="upPage">Next</button>
-        </li>
-      </ul>
-    </div>  
-  <!-- end pagination -->
+    <Pagination/>
+
 
     <!-- <div v-show="!Object.keys(searchMovies).length"></div> -->
     <div class="row">
@@ -29,32 +17,19 @@
     </div>
 
     <!-- PAGINATION -->
-    <div class="abs-center">
-      <ul class="pagination ">
-        <li class="page-item">
-          <button class="page-item" v-on:click="downPage">Previous</button>
-        </li>
-        <li class="page-item active">
-          <a class="page-link" href="">{{this.$store.state.page}} </a>
-        </li>
-        <li class="page-item disabled">
-        <button class="page-item" v-on:click="upPage">Next</button>
-        </li>
-      </ul>
-    </div>  
-  <!-- end pagination -->
+    <Pagination/>  
     
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-// import Pagination from './Pagination.vue';
+import Pagination from './Pagination.vue';
 
 export default {
   name: 'Home',
   components: {
-    // Pagination
+    Pagination
   },
 
   data(){
@@ -64,15 +39,12 @@ export default {
       API_KEY: 'f1cbc5636aa2f2d3b7c9f1c1ca7c91de',
       movies: [],
       genre: {},
-      page: this.$store.state.page,
-      total_page: null
     }
   },
 
   created() {
     // ALL MOVIES
     this.$store.dispatch("GET_MOVIES", this.page);
-    console.log(this.$store.state.page)
   },
 
   computed: {
@@ -95,17 +67,6 @@ export default {
     // getGenreRandom(){
     //   this.aleatorio();
     // },
-    upPage(){
-      this.$store.commit('UP_PAGE');
-      console.log(this.$store.state.page)
-      this.$store.dispatch("GET_MOVIES", this.$store.state.page);
-    },
-
-    downPage(){
-      this.$store.commit('DOWN_PAGE');
-      console.log(this.$store.state.page)
-      this.$store.dispatch("GET_MOVIES", this.$store.state.page);
-    }
 
   }
 }
