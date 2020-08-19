@@ -9,7 +9,7 @@
 
             <!-- POSTER -->
             <div class="col-12 col-md-4 col-lg-6">
-               <img class="imgPoster" :src="imageURL + MovieDetail.poster_path" >
+               <img class="imgPoster2" :src="imageURL + MovieDetail.poster_path" >
             </div>
 
             <!-- INFO -->
@@ -148,8 +148,9 @@ export default {
     margin-left: 50px;
     margin-right: 50px;
 }
-.imgPoster{
-  width: 30em
+.imgPoster2{
+  width: 33em;
+  border-radius: 5%;
 }
 
 .genres{

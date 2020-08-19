@@ -5,6 +5,7 @@ const API_KEY = 'f1cbc5636aa2f2d3b7c9f1c1ca7c91de';
 export default {
 
     GET_MOVIES ({ commit }, page) {
+        console.log(page)
         axios.get(`${API_URL}movie/popular?api_key=${API_KEY}&language=es-ES&page=${page}`)
         .then((res) => {
             if (res.status === 200) {

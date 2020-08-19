@@ -64,15 +64,14 @@ export default {
       API_KEY: 'f1cbc5636aa2f2d3b7c9f1c1ca7c91de',
       movies: [],
       genre: {},
-      page: 1,
+      page: this.$store.state.page,
       total_page: null
     }
   },
 
   created() {
     // ALL MOVIES
-    this.$store.dispatch("GET_MOVIES", {
-    });
+    this.$store.dispatch("GET_MOVIES", this.page);
     console.log(this.$store.state.page)
   },
 
@@ -99,11 +98,13 @@ export default {
     upPage(){
       this.$store.commit('UP_PAGE');
       console.log(this.$store.state.page)
+      this.$store.dispatch("GET_MOVIES", this.$store.state.page);
     },
 
     downPage(){
       this.$store.commit('DOWN_PAGE');
       console.log(this.$store.state.page)
+      this.$store.dispatch("GET_MOVIES", this.$store.state.page);
     }
 
   }
