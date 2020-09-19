@@ -33,4 +33,8 @@ export default {
         // state.favMovies.push(movie)
     },
 
+    SET_GENRES (state, genres) {
+        state.genres = genres;
+    },
+
 }

@@ -12,7 +12,15 @@
                 <li class="nav-item active">
                     <router-link to="/"><span>Home</span></router-link> 
                 </li>
-               
+               <li class="nav-item active">
+                    <router-link to="/">
+                        <select class="mdb-select md-form"  >
+                            <option value="" disabled selected>Choose your option</option>
+                            <option  v-for="(genre, key) of AllGenres" :key="key" :value="genre">{{genre.name}}</option>
+ 
+                        </select>
+                    </router-link> 
+                </li>
             </ul>
         </div>
 
@@ -26,13 +34,12 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <router-link to="/signUp"><span>Sign Up</span></router-link> 
-                    <!-- <a class="nav-link" href="./Register.vue"><span>Sign Up</span> -->
                 </li>
                 <li class="nav-item">
                     <router-link to="/logIn"><span>Log In</span></router-link> 
                 </li>
                 <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
+                    <a class="nav-link" href="/profile">Profile</a>
                 </li> -->
             </ul>
         </div>
@@ -54,6 +61,18 @@ export default {
             searchMovies: {}
         }
     },
+
+    created() {
+    // ALL GENRES
+    this.$store.dispatch("GET_GENRES");
+    },
+
+    computed: {
+
+    AllGenres() {
+      return this.$store.state.genres.genres
+    },
+  },
 }
 </script>
 

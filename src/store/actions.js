@@ -46,5 +46,24 @@ export default {
         console.log("HELLo")
         this.GET_MOVIES(commit, this.state.page) 
         
-    }
+    },
+
+    SEARCH_MOVIE ({ commit }, page) {
+        console.log(page)
+        axios.get(`${API_URL}movie/popular?api_key=${API_KEY}&language=es-ES&page=${page}`)
+        .then((res) => {
+            if (res.status === 200) {
+                commit('SET_MOVIES', res.data);
+            }
+        })
+    },
+
+    GET_GENRES ({ commit },) {
+        axios.get(`${API_URL}genre/movie/list?api_key=${API_KEY}&language=en-US`)
+        .then((res) => {
+            if (res.status === 200) {
+                commit('SET_GENRES', res.data);
+            }
+        })
+    },
 }
