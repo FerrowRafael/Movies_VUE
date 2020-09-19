@@ -1,0 +1,18 @@
+<template>
+    <div>
+        <p>Login</p>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'Login',
+    data(){
+        return{   
+        }
+    },
+
+    methods:{
+    }
+}
+</script>

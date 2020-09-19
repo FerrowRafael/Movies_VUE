@@ -20,7 +20,7 @@
                 <p>{{MovieDetail.runtime}} minutes</p>
                 <button class="btn" :class="btnStatus" @click="toggleFav">
                   <span v-text="like ? 'Favorita' : 'Agregar a Favoritas'"></span>
-                  <i class="far fa-heart" :class="{'far': !like, 'fas': like}"></i>
+                  <i :class="{'far fa-heart': !like, 'fas fa-heart': like}"></i>
                 </button>
               </div>
               <p>{{MovieDetail.overview}}</p>
@@ -89,6 +89,7 @@ export default {
     return{
       param: this.$route.params.id,
       imageURL: 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/',
+      like: false
     }
   },
 
@@ -129,12 +130,15 @@ export default {
       }
     },
 
-    // toggleFav(){
-    //   let data = {
-    //     id: this.id,
-    //     like: !this.like
-    //   }
-    // }
+    toggleFav(){
+      console.log(this.like)
+      this.like = !this.like
+      let data = {
+        id: this.id,
+        like: !this.like
+      }
+      this.$emit('toggleLike', data)
+    }
   }
 }
 </script>

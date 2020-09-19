@@ -24,7 +24,7 @@
 
 <script>
 import axios from 'axios';
-import Pagination from './Pagination.vue';
+import Pagination from '../components/Pagination.vue';
 
 export default {
   name: 'Home',

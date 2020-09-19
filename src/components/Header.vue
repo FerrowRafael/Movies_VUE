@@ -2,7 +2,7 @@
   <div class="container-fluid header">
     <nav class="navbar navbar-expand-lg" >
         <a class="navbar-brand" href="#">
-            <router-link to="/home"><img class="logo" src="../assets/GEEKFLIX.png" alt=""></router-link>
+            <router-link to="/"><img class="logo" src="../assets/GEEKFLIX.png" alt=""></router-link>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <router-link to="/home"><span>Home</span></router-link> 
+                    <router-link to="/"><span>Home</span></router-link> 
                 </li>
                
             </ul>
@@ -25,10 +25,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><span>Sign Up</span></a>
+                    <router-link to="/signUp"><span>Sign Up</span></router-link> 
+                    <!-- <a class="nav-link" href="./Register.vue"><span>Sign Up</span> -->
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><span>Log In</span></a>
+                    <router-link to="/logIn"><span>Log In</span></router-link> 
                 </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="#">Profile</a>

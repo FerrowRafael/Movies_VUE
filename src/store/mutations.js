@@ -29,7 +29,8 @@ export default {
     },
 
     ADD_FAV_MOVIE(state, movie){
-        state.favMovies.push(movie)
+        this.favMovies.push(movie)
+        // state.favMovies.push(movie)
     },
 
 }

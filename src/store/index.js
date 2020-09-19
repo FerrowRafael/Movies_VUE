@@ -9,12 +9,13 @@ export const store = new Vuex.Store({
     actions,
     mutations,
     state: {
-        // favMovies: [],
         movie: [],
         movies: [],
         actors: [],
         other: [],
-        page: 1
+        page: 1,
+        favMovies: [],
+        search: ""
     },
     getters: {},
     strict: true,
