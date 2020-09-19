@@ -30,7 +30,11 @@ Vue.use(VueRouter)
   //   name: '404',
   //   component: () => import('../views/404.vue')
   // },
-
+  {
+    path: '/genre/:name',
+    name: 'Genre',
+    component: () => import('../views/Genre.vue')
+  },
 ]
 
 const router = new VueRouter({

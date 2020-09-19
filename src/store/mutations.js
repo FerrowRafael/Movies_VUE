@@ -1,3 +1,4 @@
+// import store from '../store/index'
 export default {
 
     SET_MOVIES (state, movies) {
@@ -33,8 +34,45 @@ export default {
         // state.favMovies.push(movie)
     },
 
+    // SEARCH_MOVIE (state) {
+    //     state.movies = movies;
+    // },
+
     SET_GENRES (state, genres) {
         state.genres = genres;
     },
+
+    FdILTERED_COURSES (state, word) {
+        console.log(word)
+       
+
+        // const removerAcentos = (string) => {
+        //     const mapaAcentosHex = {
+        //       a: /[\xE0-\xE6]/g,
+        //       e: /[\xE8-\xEB]/g,
+        //       i: /[\xEC-\xEF]/g,
+        //       o: /[\xF2-\xF6]/g,
+        //       u: /[\xF9-\xFC]/g,
+        //       c: /\xE7/g
+        //     }
+          
+        //     for (let letra in mapaAcentosHex) {
+        //       var expressaoRegular = mapaAcentosHex[letra]
+        //       string = string.replace(expressaoRegular, letra)
+        //     }
+          
+        //     return string
+        //   }
+        // if (!(word) || word === '{}') {
+        //     state.searchWord = null
+        //     state.filteredCourses = null
+        // } else {
+        //   state.searchWord = word
+        //   word = removerAcentos(word.trim().toLowerCase())
+        //   state.filteredCourses = (this.$store.state.movies.results).filter((course) => {
+        //     return course.slug.toLowerCase().includes(word) || course.name.toLowerCase().includes(word) || course.type.toLowerCase().includes(word)
+        //   })
+        // }
+    }
 
 }

@@ -12,14 +12,17 @@
                 <li class="nav-item active">
                     <router-link to="/"><span>Home</span></router-link> 
                 </li>
+                <!-- GENRE SELECT -->
                <li class="nav-item active">
-                    <router-link to="/">
-                        <select class="mdb-select md-form"  >
-                            <option value="" disabled selected>Choose your option</option>
-                            <option  v-for="(genre, key) of AllGenres" :key="key" :value="genre">{{genre.name}}</option>
- 
-                        </select>
-                    </router-link> 
+                    <select >
+                        <option value="" disabled selected>Choose your option</option>
+                        <option v-for="(genre, key) of AllGenres" :key="key" :value="genre.name">
+                            <router-link  :to="'/genre/'+ genre.name">
+                                <p>{{genre.name}}</p>
+                            </router-link>         
+                        </option>
+                    </select>
+
                 </li>
             </ul>
         </div>
@@ -69,9 +72,19 @@ export default {
 
     computed: {
 
-    AllGenres() {
-      return this.$store.state.genres.genres
+        AllGenres() {
+        return this.$store.state.genres.genres
+        },
     },
+
+    changeRoute () {
+        console.log("hello");
+    this.$router.push({
+      name: 'genre/1',
+      query: {
+        myQuery: this.selected,
+      },
+    });
   },
 }
 </script>

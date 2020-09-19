@@ -48,9 +48,8 @@ export default {
         
     },
 
-    SEARCH_MOVIE ({ commit }, page) {
-        console.log(page)
-        axios.get(`${API_URL}movie/popular?api_key=${API_KEY}&language=es-ES&page=${page}`)
+    FILTERED_COURSES ({ commit}, query) {
+        axios.get(`${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`)
         .then((res) => {
             if (res.status === 200) {
                 commit('SET_MOVIES', res.data);
@@ -58,7 +57,7 @@ export default {
         })
     },
 
-    GET_GENRES ({ commit },) {
+    GET_GENRES ({ commit }) {
         axios.get(`${API_URL}genre/movie/list?api_key=${API_KEY}&language=en-US`)
         .then((res) => {
             if (res.status === 200) {
@@ -66,4 +65,8 @@ export default {
             }
         })
     },
+
+    FsILTERED_COURSES ({ commit }, word) {
+        commit('FILTERED_COURSES', word)
+      }
 }

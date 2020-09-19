@@ -1,17 +1,8 @@
 <template>
-    <div id="search">
-        <form @submit.prevent="search" class="form-inline md-form form-sm mt-0">
-            <div class="input-group md-form form-sm form-2 pl-0 w-100">
-                <input class="form-control my-0 py-1 green-border" 
-                type="text" placegolder="Buscar" aria-label="Buscar" v-model="query">
-                <div class="input-group-append">
-                    <button class="input-group-text green">
-                        <i class="fas fa-search text-grey" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
+    <div class="search-wrapper">
+    <input type="search" v-model="searchWord" required />
+        <label>Search title:</label>
+  </div>
 </template>
 
 <script>
@@ -21,6 +12,7 @@ export default {
     
   name: 'Search',
   
+  
   data(){
     return{
         API_URL: 'https://api.themoviedb.org/3/',
@@ -28,9 +20,20 @@ export default {
         query: ""
     }
   },
+  computed: {
+    searchWord: {
+      get () {
+        return this.$store.state.searchWord
+      },
+      set (value) {
+        this.$store.dispatch('FILTERED_COURSES', value)
+      }
+    }
+  },
 
   methods:{
-      search(){
+      search(searchWord){
+          console.log(searchWord);
           axios
           .get(`${this.API_URL}search/movie?api_key=${this.API_KEY}&language=en-US&query=${this.query}&page=1&include_adult=false`)
           .then(response => {
@@ -41,3 +44,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+</style>
