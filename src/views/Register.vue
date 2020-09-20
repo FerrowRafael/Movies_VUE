@@ -40,10 +40,11 @@ export default {
       }
     },
 
-     methods:{
-      reg(){
-        this.$store.dispatch('REGISTER', this.user);
-      }
+    methods:{
+        reg(){
+            this.$store.dispatch('REGISTER', this.user);
+            setTimeout( () => this.$router.push({ path: '/login'}), 2000);
+        }
     }
 }
 </script>

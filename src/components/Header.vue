@@ -33,19 +33,15 @@
         </div>
        
         <!-- REGISTER / LOGIN -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <router-link to="/signUp"><span>Sign Up</span></router-link> 
-                </li>
-                <li class="nav-item">
-                    <router-link to="/logIn"><span>Log In</span></router-link> 
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="/profile">Profile</a>
-                </li> -->
-            </ul>
+        <div className="userZone" v-if="isLogged === true">
+            <router-link to="/signUp"><span>{{$store.state.user.message}}</span></router-link>
+            <router-link to="/profile"><span>Profile</span></router-link>
+            <button to="/" @click.prevent="logout"><span>Logout</span></button>
         </div>
+        <div className="guestZone" v-if="isLogged == true ">
+            <router-link to="/signUp"><span>Sign Up</span></router-link> 
+            <router-link to="/logIn"><span>Log In</span></router-link>
+        </div>        
     </nav>
   </div>
 
@@ -61,13 +57,16 @@ export default {
 
     data(){
         return{
-            searchMovies: {}
+            searchMovies: {},
+            isLogged: true
+            // this.checkIfIsLogged()
         }
     },
 
     created() {
     // ALL GENRES
     this.$store.dispatch("GET_GENRES");
+    console.log(this.isLogged);
     },
 
     computed: {
@@ -77,15 +76,24 @@ export default {
         },
     },
 
-    changeRoute () {
-        console.log("hello");
-    this.$router.push({
-      name: 'genre/1',
-      query: {
-        myQuery: this.selected,
-      },
-    });
-  },
+    methods: {
+        logout(){
+            this.$store.dispatch('LOGOUT');
+            this.isLogged = this.checkIfIsLogged()
+            this.$router.push('/')
+        },
+
+        checkIfIsLogged () {
+            console.log("TOKEN")
+            let token = this.$localStorage.getItem('authToken')
+            console.log(token)
+            if (token) {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
 }
 </script>
 

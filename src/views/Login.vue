@@ -1,44 +1,78 @@
 <template>
-    <div class="container">
-    <div class="col-md-12">
-      <h1 class="margin-bottom-15">登录</h1>
-      <form class="form-horizontal templatemo-container templatemo-login-form-1 margin-bottom-30" role="form" method="post" @submit.prevent="sub()">
-        <div class="form-group">
-          <div class="col-xs-12">
-            <div class="control-wrapper">
-              <label for="username" class="control-label fa-label"><i class="fa fa-user fa-medium"></i></label>
-              <input type="text" class="form-control" id="username" placeholder="用户名" v-model="user.name">
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-md-12">
-            <div class="control-wrapper">
-              <label for="password" class="control-label fa-label"><i class="fa fa-lock fa-medium"></i></label>
-              <input type="password" class="form-control" id="password" placeholder="密码" v-model="user.password">
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-md-12 text-center">
-            <input type="submit" value="登录" class="btn btn-info">
-            <router-link to="/" class="btn btn-default">返回</router-link>
-          </div>
-        </div>
-      </form>
-    </div>
+<div class="login">
+    <h1 class="title">Login</h1>
+    <form method="post" @submit.prevent="login()" class="form" id="myTabContent">
+      <label class="form-label" for="#email">Email:</label>
+      <input class="form-input" type="email" id="email" required placeholder="Email" v-model="user.email">
+      <label class="form-label" for="#password">Password:</label>
+      <input class="form-input" type="password" id="password" placeholder="Password" v-model="user.password">
+      <input class="form-submit" type="submit" value="Login">
+      <router-link to="/signUp"><span>Ya estas registrado?</span></router-link> 
+    </form>
   </div>
+
 </template>
 
 <script>
 export default {
     name: 'Login',
-    data(){
-        return{   
+    data (){
+      return {
+        user: {
+          email: '',
+          password: ''
         }
+      }
     },
 
     methods:{
+      login(){
+        this.$store.dispatch('LOGIN', this.user);
+        setTimeout( () => this.$router.push({ path: '/'}), 3000);
+      }
     }
 }
 </script>
+
+<style scoped>
+.login {
+  padding: 2rem;
+}
+.title {
+  text-align: center;
+}
+.form {
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 20%;
+  min-width: 350px;
+  max-width: 100%;
+  background: rgba(19, 35, 47, 0.9);
+  border-radius: 5px;
+  padding: 40px;
+  box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.3);
+}
+.form-label {
+  margin-top: 2rem;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+.form-input {
+  padding: 10px 15px;
+  background: none;
+  background-image: none;
+  border: 1px solid white;
+  color: white;
+}
+.form-submit {
+  background: #1ab188;
+  border: none;
+  color: white;
+  margin-top: 3rem;
+  padding: 1rem 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+</style>

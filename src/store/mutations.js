@@ -46,4 +46,12 @@ export default {
         console.log(user)
         state.user = user;
     },
+
+    USER_LOGIN (state, user) {
+        state.user = user;
+    },
+
+    USER_LOGOUT (state) {
+        state.user = undefined;
+    },
 }

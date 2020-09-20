@@ -16,7 +16,8 @@ export const store = new Vuex.Store({
         page: 1,
         favMovies: [],
         search: "",
-        genres: []
+        genres: [],
+        user: []
     },
     getters: {},
     strict: true,

@@ -77,5 +77,27 @@ export default {
         })
     },
 
+    LOGIN ({ commit }, user) {
+        axios.post(`http://localhost:3000/users/login`, user)
+        .then((res) => {
+            if (res.status === 200) {
+                commit('USER_LOGIN', res.data);
+                localStorage.setItem('authToken', res.data.token);
+            }
+        })
+    },
+
+    async LOGOUT ({ commit }) {
+        console.log("Logout")
+        await axios.post(`http://localhost:3000/users/logout`,{
+            headers: {
+                Authorization: localStorage.getItem('authToken')
+            }
+        })
+        .then((res) => {
+            commit('USER_LOGOUT', res.data);
+            localStorage.removeItem('authToken');
+        })
+    }
 
 }
