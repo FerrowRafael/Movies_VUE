@@ -66,7 +66,16 @@ export default {
         })
     },
 
-    FsILTERED_COURSES ({ commit }, word) {
-        commit('FILTERED_COURSES', word)
-      }
+    // USER
+    REGISTER ({ commit }, user) {
+        axios.post(`http://localhost:3000/users/register`, user)
+        .then((res) => {
+            console.log(res)
+            if (res.status === 200) {
+                commit('USER_REGISTER', res.data);
+            }
+        })
+    },
+
+
 }

@@ -48,11 +48,11 @@ export default {
   },
 
   computed: {
-
     MoviesPopular() {
       return this.$store.state.movies.results
     },
   },
+  
   methods: {
 
     aleatorio(){ //Falta un traductor del numero aleatorio y los id de los generos
